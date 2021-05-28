@@ -1,8 +1,15 @@
+import enumeration.Format;
+import model.Author;
+import model.Book;
+import model.EBook;
+import model.PrintBook;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Test {
+public class BookApplication {
 
     public static void main(String[] args) {
         List<Book> books = new ArrayList<>();
@@ -25,6 +32,7 @@ public class Test {
 
         booksHolder.printBooksSortedByYear();
 
+        System.out.println("Please enter only one letter: ");
         Scanner scanner = new Scanner(System.in);
         String letter = scanner.next();
 

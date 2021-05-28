@@ -1,3 +1,7 @@
+package model;
+
+import enumeration.Type;
+
 public abstract class Book {
     private String ISBN;
     private int publishYear;
@@ -12,7 +16,7 @@ public abstract class Book {
     }
 
 
-    int getPublishYear(){
+    public int getPublishYear(){
         return this.publishYear;
     }
 
@@ -21,7 +25,7 @@ public abstract class Book {
         return this.ISBN;
     }
 
-    Author getAuthor(){
+    public Author getAuthor(){
         return this.author;
     }
 

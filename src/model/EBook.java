@@ -1,3 +1,8 @@
+package model;
+
+import enumeration.Format;
+import enumeration.Type;
+
 public class EBook extends Book {
     private Format format;
     private double size;

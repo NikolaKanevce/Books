@@ -1,3 +1,7 @@
+package model;
+
+import enumeration.Type;
+
 public class PrintBook extends Book{
     private int numberOfPages;
     private double weight;

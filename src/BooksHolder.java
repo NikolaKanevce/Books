@@ -1,3 +1,7 @@
+import enumeration.Type;
+import model.Author;
+import model.Book;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -8,7 +12,7 @@ public class BooksHolder {
         this.books = new ArrayList<>();
     }
 
-    public BooksHolder(List<Book> books) {
+    BooksHolder(List<Book> books) {
         this.books = books;
     }
 
@@ -20,31 +24,31 @@ public class BooksHolder {
         this.books.addAll(books);
     }
 
-    public void printBooksSortedByYear() {
+    void printBooksSortedByYear() {
         System.out.println(this.books.stream().sorted(Comparator.comparing(Book::getPublishYear)).collect(Collectors.toList()));
     }
 
-    public void printBooksByFirstLetterOfTheAuthorSurname(String letter) {
+    void printBooksByFirstLetterOfTheAuthorSurname(String letter) {
         List<Book> books;
         books = this.books.stream().filter(s->s.getAuthor().getSurname().startsWith(letter)).collect(Collectors.toList());
         System.out.println(books);
     }
 
-    public void authorsWithSameDecadeAsBooks(){
+    void authorsWithSameDecadeAsBooks(){
         Set<Author> authors = new HashSet();
         List<Author> authorsInSameDecade = new ArrayList<>();
         books.forEach(s->authors.add(s.getAuthor()));
         for(Author author: authors){
             if(books.stream().filter(book-> book.getType().equals(Type.PRINT_COPY) &&
                     book.getPublishYear() >= (author.getBirthYear()/10)*10 &&
-                    book.getPublishYear() <= ((author.getBirthYear()/10) * 10) + 10).count() > 0){
+                    book.getPublishYear() <= ((author.getBirthYear()/10) * 10) + 10).count() > 1){
                 authorsInSameDecade.add(author);
             }
         }
         System.out.println(authorsInSameDecade);
     }
 
-    public void printAuthorsWithMoreThanThreeBooks(){
+    void printAuthorsWithMoreThanThreeBooks(){
         Set<Author> authors = new HashSet();
         List<Author> authorsWithMoreThanThreeBooks = new ArrayList<>();
         books.forEach(s->authors.add(s.getAuthor()));
@@ -56,7 +60,7 @@ public class BooksHolder {
         System.out.println(authorsWithMoreThanThreeBooks);
     }
 
-    public void getOldestAndNewestBook(){
+    void getOldestAndNewestBook(){
         List<Book> listOfBooks = this.books.stream().sorted(Comparator.comparing(Book::getPublishYear)).collect(Collectors.toList());
         System.out.println("Oldest book is: ");
         System.out.println(listOfBooks.get(0));
